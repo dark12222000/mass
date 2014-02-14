@@ -1,18 +1,23 @@
 #mass#
 ##A quick tool to grab scans from shitty websites##
 
+##Install##
+You'll need Node and NPM installed.  You can grab these from http://nodejs.org.  Then it's just
+    npm install
+from the root directory and you are good to go.
+
 ##Basic usage##
-node app.js --url http://www.whatever.com/stuff/{}.html 
+    node app.js --url http://www.whatever.com/stuff/{}.html 
 
 The {} represents the page number.  You probably need to go into the comic a page or two to discover where the page number belongs. We'll start at 1 and go up to 99 by default.  You can increase the max.
 
 ##Using all our options##
-node app.js --url http://www.whatever.com/stuff/{}.html --id #image --max 500 --name nice_name
+    node app.js --url http://www.whatever.com/stuff/{}.html --id #image --max 500 --name nice_name
 
 ##Samples##
 ###Grabbing fairy tail 38 from mangahere###
-node app.js --url http://www.mangahere.com/manga/fairy_tail/v38/c370/{}.html --name fairy_tail
+    node app.js --url http://www.mangahere.com/manga/fairy_tail/v38/c370/{}.html --name fairy_tail
 ###Grabbing freezing 21 from mangafox###
-node app.js --url http://mangafox.me/manga/freezing/v21/c147/{}.html --name freezing
+    node app.js --url http://mangafox.me/manga/freezing/v21/c147/{}.html --name freezing
 ###Grabbing katekyo from mangago.com, notice the quotes around the id###
-node app.js --url http://www.mangago.com/read-manga/katekyo/mw/c026.8/pg-{}/ --name katekyo --id "#page1"
+    node app.js --url http://www.mangago.com/read-manga/katekyo/mw/c026.8/pg-{}/ --name katekyo --id "#page1"

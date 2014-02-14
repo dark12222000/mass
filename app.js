@@ -8,6 +8,12 @@ var suf;
 
 //console.log(argv);
 
+//Make sure we have our output directory
+if(!fs.existsSync('output/')){
+	fs.makedirSync('output/');
+	console.log('Oops, no output directory, we can fix that...');
+}
+
 if(argv.url){
 	var url = argv.url.split('{}');
 	console.log(url);
