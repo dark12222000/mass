@@ -1,5 +1,6 @@
 {
   "name": "mass",
+  "main":"index.html",
   "version": "0.0.0",
   "description": "",
   "main": "app.js",
@@ -11,6 +12,7 @@
   "dependencies": {
     "request": "~2.33.0",
     "yargs": "~1.0.15",
-    "cheerio": "~0.13.1"
+    "cheerio": "~0.13.1",
+    "express": "~3.4.8"
   }
 }
