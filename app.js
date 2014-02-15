@@ -34,9 +34,16 @@ if(argv.url){
 		console.log('Got a call..');
 		console.log(req.query);
 
-		mass(req.query.url, req.query.max, req.query.name, req.query.selector, function(success, error){
-			
-		});
+		var url = req.query.url;
+		var max = req.query.max;
+		var name = req.query.name;
+		var selector = req.query.selector;
+
+		if(!max || max == 'undefined'){
+			max = 50;
+		}
+
+		mass(url, max, name, selector);
 		res.send(200);
 	});
 
@@ -44,8 +51,10 @@ if(argv.url){
 	console.log('API Interface up on 9001');
 }
 
-function mass(url, max, name, selector, callback){
+function mass(url, max, name, selector){
+	console.log('in mass');
 	if(url){
+		console.log(url);
 		url = url.split('{}');
 		//console.log(url);
 		if(url.length >= 2){
@@ -64,7 +73,7 @@ function mass(url, max, name, selector, callback){
 		}
 	}
 
-	if(!max){
+	if(!max || max < 1 || max == 'undefined'){
 		max = 50;
 	}
 
@@ -74,9 +83,12 @@ function mass(url, max, name, selector, callback){
 		}
 	}
 
+	console.log(max);
+
 	for(var i = 1; i<max; i++){
 		//console.log('Now trying to get: ' + pre+i+suf);
-		pullImgSrc(pre+i+suf, selector, i, grabImage, callback);
+		console.log('pulling image...');
+		pullImgSrc(pre+i+suf, selector, i, grabImage);
 	}
 }
 
@@ -119,5 +131,7 @@ function grabImage(src, count){
 		request.get(src).pipe(fs.createWriteStream(directory));
 
 		console.log('Saved #'+count);
+	}else{
+		console.log('No source given...');
 	}
 }
